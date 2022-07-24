@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SairanTicketsDLA.Models;
+
 
 namespace SairanTicketsDLA
 {
@@ -14,6 +16,8 @@ namespace SairanTicketsDLA
         {
             
         }
+
+        public DbSet<Bus> Buses { get; set; }
 
         
     }

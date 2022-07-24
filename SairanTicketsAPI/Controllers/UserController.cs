@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SairanTicketsAPI.Models;
+using SairanTicketsAPI.Services;
 
 namespace SairanTicketsAPI.Controllers
 {
@@ -9,11 +9,17 @@ namespace SairanTicketsAPI.Controllers
     public class UserController : ControllerBase
     {
 
+        private readonly IUserService _userService;
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         [HttpGet]
-        public IActionResult GetUsers()
+        public async Task<IActionResult> GetUsers()
         {
             
-            return Ok();
+            return Ok(await _userService.GetUserAsync(2));
         }
 
         

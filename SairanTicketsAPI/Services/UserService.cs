@@ -1,17 +1,27 @@
-﻿using SairanTicketsDLA.Models;
+﻿using SairanTicketsDLA;
+using SairanTicketsDLA.Models;
 
 namespace SairanTicketsAPI.Services
 {
-    public class UserService : IUserService
+    public class UserService : BaseService, IUserService
     {
+
+        public UserService(ApplicationDbContext context) : base(context)
+        {
+
+        }
         public void DeleteUserAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<User> GetUserAsync(int id)
+        public async Task<User> GetUserAsync(int id)
         {
-            throw new NotImplementedException();
+            User user = new User()
+            {
+                Id = id
+            };
+            return user;
         }
 
         public Task<User> GetUsersAsync()
